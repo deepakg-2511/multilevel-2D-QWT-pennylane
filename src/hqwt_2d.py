@@ -1,4 +1,4 @@
-from HQWT_1D import qhaar_1d, qhaar_1d_inverse
+from src.hqwt_1d import qhaar_1d, qhaar_1d_inverse
 
 
 def qhaar_2d(wires, spatial):

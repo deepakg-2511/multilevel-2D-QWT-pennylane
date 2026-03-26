@@ -1,6 +1,6 @@
 import pennylane as qml
-from .D4QWT_2D import qd4_2d, qd4_2d_inverse
-from .permutations import P_2n_2, P_2_2n
+from src.d4qwt_2d import qd4_2d, qd4_2d_inverse
+from src.permutations import P_2n_2, P_2_2n
 
 
 # ------------------------------------------------

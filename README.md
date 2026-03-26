@@ -15,7 +15,7 @@ Wavelet transforms are fundamental tools in classical signal and image processin
 The focus of this repository is:
 
 * Quantum circuit construction of wavelet transforms
-* Implementation of core operators such as ( D_{2^n}^{p} ) and permutation operators
+* Implementation of core operators such as `D_{2^n}^p` and permutation operators
 * Extension from **1D QWT → 2D QWT → Multilevel QWT**
 
 ---
@@ -26,32 +26,28 @@ The focus of this repository is:
 
 A classical image or signal is encoded into a quantum state:
 
-[
-|\psi\rangle = \sum_{x,y} \theta_{x,y} |x\rangle |y\rangle
-]
+ψ = Σ₍x,y₎ θ₍x,y₎ |x⟩|y⟩
 
 This is called a **Normal Arbitrary Superposition State (NASS)**.
 
 👉 Advantage:
-A (2^n \times 2^m) image is stored using only (n+m) qubits.
+A (2^n × 2^m) image is stored using only (n + m) qubits.
 
 ---
 
-### 2. Key Operator: ( D_{2^n}^{p} )
+### 2. Key Operator: D₂ⁿᵖ
 
 The D-operator is the **core building block** of the Daubechies (D4) quantum wavelet transform:
 
-[
-D_{2^n}^{p} = (I \otimes S_1), Q_{2^n}, (I \otimes S_0), Q_{2^n}^{-1}
-]
+D₂ⁿᵖ = (I ⊗ S₁) · Q₂ⁿ · (I ⊗ S₀) · Q₂ⁿ⁻¹
 
-* (Q_{2^n}): permutation operator (implemented via triangular controlled gates)
-* (S_0, S_1): single-qubit rotations
+* Q₂ⁿ → permutation operator (triangular controlled circuit)
+* S₀, S₁ → single-qubit rotations
 
 👉 In this project, this operator is implemented using:
 
-* Multi-controlled X gates (with control on 0)
-* Decomposition of (S_0, S_1) into native rotation gates
+* Multi-controlled X gates (control on 0)
+* Decomposition of S₀ and S₁ into rotation gates (RY + Z)
 
 ---
 
@@ -59,17 +55,13 @@ D_{2^n}^{p} = (I \otimes S_1), Q_{2^n}, (I \otimes S_0), Q_{2^n}^{-1}
 
 Two main types:
 
-#### Haar QWT:
+#### Haar QWT
 
-[
-W_{2^n}^{H} = P_{2^{n-1},2} (I \otimes H)
-]
+W₂ⁿᴴ = P₂ⁿ⁻¹,₂ (I ⊗ H)
 
-#### Daubechies D4 QWT:
+#### Daubechies D4 QWT
 
-[
-F_{2^n} = P_{2^{n-1},2} \cdot D_{2^n}^{p}
-]
+F₂ⁿ = P₂ⁿ⁻¹,₂ · D₂ⁿᵖ
 
 ---
 
@@ -77,11 +69,9 @@ F_{2^n} = P_{2^{n-1},2} \cdot D_{2^n}^{p}
 
 The 2D QWT is constructed as:
 
-[
-W_{2^n} \otimes W_{2^m}
-]
+W₂ⁿ ⊗ W₂ᵐ
 
-👉 This applies wavelet transform across both spatial dimensions.
+👉 This applies wavelet transform along both spatial dimensions.
 
 ---
 
@@ -90,14 +80,12 @@ W_{2^n} \otimes W_{2^m}
 The transform is applied **recursively**, producing multi-scale decomposition:
 
 * Level 1 → coarse + detail components
-* Level 2 → further decomposition of coarse part
-* …
+* Level 2 → further decomposition
+* Higher levels → hierarchical structure
 
 This is implemented using operators:
 
-[
-Q_f^i(2^n,2^m), \quad Q_s^i(2^n,2^m)
-]
+Q_f^i(2^n, 2^m),  Q_s^i(2^n, 2^m)
 
 which involve:
 
@@ -111,8 +99,8 @@ which involve:
 
 ### ✔ Core Operators
 
-* ( D_{2^n}^{p} ) operator (fully implemented)
-* ( Q_{2^n} ) permutation operator (triangular circuit)
+* `D_{2^n}^p` operator (fully implemented)
+* `Q_{2^n}` permutation operator (triangular circuit)
 * Controlled gates with control on 0
 
 ---
@@ -126,7 +114,7 @@ which involve:
 
 ### ✔ 2D Quantum Wavelet Transform
 
-* Tensor-product construction ( W_{2^n} \otimes W_{2^m} )
+* Tensor-product construction: W₂ⁿ ⊗ W₂ᵐ
 * Circuit-level implementation using PennyLane
 
 ---
@@ -134,7 +122,7 @@ which involve:
 ### ✔ Circuit Design Features
 
 * Multi-controlled gates with ancilla support
-* Gate decomposition (no use of large unitary matrices)
+* Gate decomposition (no large unitary matrices)
 * Fully compatible with PennyLane simulation
 
 ---
@@ -180,28 +168,25 @@ qml.draw_mpl(circuit)()
 
 ## 📊 Key Insights from Paper
 
-* Quantum wavelet transforms achieve:
-  [
-  \mathcal{O}((n+m)^3)
-  ]
-  complexity
+Quantum wavelet transforms achieve:
 
-compared to classical:
-[
-\mathcal{O}(2^{n+m})
-]
+O((n + m)^3)
 
-👉 This gives **exponential speedup**.
+compared to classical complexity:
+
+O(2^(n + m))
+
+👉 This provides **exponential speedup**.
 
 ---
 
 ## 🚀 Future Work
 
 * [ ] Full multilevel 2D QWT implementation
-* [ ] Iterative circuit construction (Section III-C of paper)
+* [ ] Iterative circuit construction (Section III-C)
 * [ ] Quantum image compression algorithm
-* [ ] Performance benchmarking vs classical wavelets
-* [ ] Integration with quantum machine learning models
+* [ ] Benchmarking vs classical wavelets
+* [ ] Integration with quantum ML models
 
 ---
 

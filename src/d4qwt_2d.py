@@ -1,4 +1,4 @@
-from .D4QWT_1D import F_2n, F_2n_inverse
+from src.d4qwt_1d import F_2n, F_2n_inverse
 
 
 def qd4_2d(wires, spatial):

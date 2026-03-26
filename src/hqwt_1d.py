@@ -1,5 +1,5 @@
 import pennylane as qml
-from permutations import P_2n_2, P_2_2n
+from src.permutations import P_2n_2, P_2_2n
 
 
 def qhaar_1d(wires):

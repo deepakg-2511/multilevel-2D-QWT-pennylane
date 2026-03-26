@@ -1,36 +1,6 @@
 import pennylane as qml
 import numpy as np
-
-from .permutations import P_2n_2, P_2_2n
-
-
-# -------------------------------------------------
-# S0 and S1 operators
-# -------------------------------------------------
-
-# def S0_gate(wire):
-#     theta0 = -5*np.pi/6
-#     qml.RY(theta0, wires=wire)
-#     qml.PauliZ(wires=wire)
-
-
-# def S1_gate(wire):
-#     theta1 = -np.pi/3
-#     qml.RY(theta1, wires=wire)
-#     qml.PauliZ(wires=wire)
-
-
-# def S0_inv_gate(wire):
-#     theta0 = -5*np.pi/6
-#     qml.PauliZ(wires=wire)
-#     qml.RY(-theta0, wires=wire)
-
-
-# def S1_inv_gate(wire):
-#     theta1 = -np.pi/3
-#     qml.PauliZ(wires=wire)
-#     qml.RY(-theta1, wires=wire)
-
+from src.permutations import P_2n_2, P_2_2n
 
 S0 = np.array([
     [np.sin(2*np.pi/3), np.cos(2*np.pi/3)],
