@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Multilevel 2D Quantum Wavelet Transform (QWT) - PennyLane
 
 Implementation of QWT based on Li et al.
@@ -12,3 +13,6 @@ Implementation of QWT based on Li et al.
 - src/
 - notebooks/
 - results/
+=======
+# multilevel-2D-QWT-pennylane
+Quantum Wavelet Transform (QWT) implementation in PennyLane based on Li et al.
