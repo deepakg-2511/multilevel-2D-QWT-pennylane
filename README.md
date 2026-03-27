@@ -7,7 +7,7 @@ This repository contains an implementation of **Quantum Wavelet Transforms (QWT)
 IEEE Transactions on Cybernetics, 52 (8) (2021) 8467–8480.
 ---
 
-## 📌 Overview
+##  Overview
 
 Wavelet transforms are fundamental tools in classical signal and image processing. This project implements their **quantum counterparts**, which provide **exponential speedup** by operating on quantum states.
 
@@ -19,7 +19,7 @@ The focus of this repository is:
 
 ---
 
-## 🧠 Background (Simplified Theory)
+##  Background (Simplified Theory)
 
 ### 1. Quantum State Representation (NASS)
 
@@ -29,7 +29,7 @@ A classical image or signal is encoded into a quantum state:
 
 This is called a **Normal Arbitrary Superposition State (NASS)**.
 
-👉 Advantage:
+ Advantage:
 A (2^n × 2^m) image is stored using only (n + m) qubits.
 
 ---
@@ -43,7 +43,7 @@ D₂ⁿᵖ = (I ⊗ S₁) · Q₂ⁿ · (I ⊗ S₀) · Q₂ⁿ⁻¹
 * Q₂ⁿ → permutation operator (triangular controlled circuit)
 * S₀, S₁ → single-qubit rotations
 
-👉 In this project, this operator is implemented using:
+ In this project, this operator is implemented using:
 
 * Multi-controlled X gates (control on 0)
 * Decomposition of S₀ and S₁ into rotation gates (RY + Z)
@@ -70,7 +70,7 @@ The 2D QWT is constructed as:
 
 W₂ⁿ ⊗ W₂ᵐ
 
-👉 This applies wavelet transform along both spatial dimensions.
+ This applies wavelet transform along both spatial dimensions.
 
 ---
 
@@ -92,9 +92,9 @@ This avoids explicit control-based constructions and follows a **domain-reductio
 
 ---
 
-## ✅ Implemented Components
+##  Implemented Components
 
-### ✔ Core Operators
+###  Core Operators
 
 * `D_{2^n}^p` operator (fully implemented)
 * `Q_{2^n}` permutation operator (triangular circuit)
@@ -102,21 +102,21 @@ This avoids explicit control-based constructions and follows a **domain-reductio
 
 ---
 
-### ✔ 1D Quantum Wavelet Transforms
+###  1D Quantum Wavelet Transforms
 
 * Haar QWT
 * Daubechies D4 QWT
 
 ---
 
-### ✔ 2D Quantum Wavelet Transform
+###  2D Quantum Wavelet Transform
 
 * Tensor-product construction: W₂ⁿ ⊗ W₂ᵐ
 * Circuit-level implementation using PennyLane
 
 ---
 
-### ✔ Multilevel QWT
+###  Multilevel QWT
 
 * Multilevel Haar QWT (1D and 2D)
 * Multilevel D4 QWT (1D and 2D)
@@ -125,7 +125,7 @@ This avoids explicit control-based constructions and follows a **domain-reductio
 
 ---
 
-### ✔ Circuit Design Features
+###  Circuit Design Features
 
 * Multi-controlled gates with ancilla support
 * Gate decomposition (no large unitary matrices)
@@ -133,7 +133,7 @@ This avoids explicit control-based constructions and follows a **domain-reductio
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 src/
@@ -151,7 +151,7 @@ notebooks/
 
 ---
 
-## ▶️ How to Run
+## ▶ How to Run
 
 Install dependencies:
 
@@ -169,7 +169,7 @@ qml.draw_mpl(circuit)()
 
 ---
 
-## 📊 Key Insights from Paper
+##  Key Insights from Paper
 
 Quantum wavelet transforms achieve:
 
@@ -179,17 +179,7 @@ compared to classical complexity:
 
 O(2^(n + m))
 
-👉 This provides **exponential speedup**.
-
----
-
-## 🚀 Future Work
-
-* [ ] Extract LL, LH, HL, HH subbands explicitly
-* [ ] Iterative circuit construction (Section III-C)
-* [ ] Quantum image compression algorithm
-* [ ] Benchmarking vs classical wavelets
-* [ ] Integration with quantum ML models
+ This provides **exponential speedup**.
 
 ---
 
@@ -201,17 +191,10 @@ IEEE Transactions on Cybernetics.
 
 ---
 
-## 🙌 Author
+##  Author
 
 Deepak Gupta
+Computational & data Sciences
 Indian Institute of Science (IISc)
 
 ---
-
-## ⭐ Note
-
-This project is part of ongoing research in:
-
-* Quantum signal processing
-* Quantum machine learning
-* Quantum PDE solvers
