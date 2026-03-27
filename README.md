@@ -2,10 +2,9 @@
 
 This repository contains an implementation of **Quantum Wavelet Transforms (QWT)** based on the paper:
 
-**Hai-Sheng Li et al.,**
-*"Multilevel 2-D Quantum Wavelet Transforms"*,
-IEEE Transactions on Cybernetics, 2022.
-
+**H.-S. Li, P. Fan, H. Peng, S. Song, G.-L. Long,**
+*"Multilevel 2-d quantum wavelet transforms"*,
+IEEE Transactions on Cybernetics, 52 (8) (2021) 8467–8480.
 ---
 
 ## 📌 Overview
@@ -83,15 +82,13 @@ The transform is applied **recursively**, producing multi-scale decomposition:
 * Level 2 → further decomposition
 * Higher levels → hierarchical structure
 
-This is implemented using operators:
+In this implementation, multilevel QWT is achieved by:
 
-Q_f^i(2^n, 2^m),  Q_s^i(2^n, 2^m)
+* Applying QWT on the full system (level 1)
+* Recursively applying QWT on reduced subsets of qubits
+* Restricting operations to progressively smaller subspaces (low-frequency components)
 
-which involve:
-
-* permutation operators
-* tensor structures
-* recursive circuit construction
+This avoids explicit control-based constructions and follows a **domain-reduction approach** consistent with circuit constraints.
 
 ---
 
@@ -119,6 +116,15 @@ which involve:
 
 ---
 
+### ✔ Multilevel QWT
+
+* Multilevel Haar QWT (1D and 2D)
+* Multilevel D4 QWT (1D and 2D)
+* Inverse multilevel transforms implemented
+* Reconstruction validation (forward + inverse consistency)
+
+---
+
 ### ✔ Circuit Design Features
 
 * Multi-controlled gates with ancilla support
@@ -137,13 +143,10 @@ src/
     hqwt_2d.py
     permutations.py
     encoding.py
-    multilevel_QWT.py
+    multilevel_qwt.py
 
 notebooks/
     test.ipynb
-
-results/
-    IISc.png
 ```
 
 ---
@@ -182,7 +185,7 @@ O(2^(n + m))
 
 ## 🚀 Future Work
 
-* [ ] Full multilevel 2D QWT implementation
+* [ ] Extract LL, LH, HL, HH subbands explicitly
 * [ ] Iterative circuit construction (Section III-C)
 * [ ] Quantum image compression algorithm
 * [ ] Benchmarking vs classical wavelets
